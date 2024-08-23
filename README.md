@@ -1,30 +1,24 @@
 #NOX SHOP PROJECT
 
-## Getting Started
+This project is a fully functional eCommerce website built with modern web technologies, designed to offer a seamless and intuitive shopping experience. The website is developed using Next.js for server-side rendering and dynamic routing, ensuring fast load times and SEO optimization.
 
-First, run the development server:
+## 🔧 Key Features
+- Authentication & Authorization: Integrated with Kinde for secure and scalable user management.
+- UI/UX: Leveraging shadcn/ui for a responsive, accessible, and aesthetically pleasing interface.
+- Payment Processing: Powered by Stripe for secure and efficient payment processing, ensuring a smooth checkout experience.
+- State Management: Implemented with React Context and Redis for real-time data handling and caching.
+- Database: Uses PostgreSQL with Prisma ORM for robust and scalable data storage.
+- Product Catalog: Dynamic product listing with advanced filtering and sorting features.
+- Shopping Cart: Persistent shopping cart functionality that allows users to manage their selections effortlessly.
+- Order Management: Comprehensive order tracking and management system for both users and administrators.
+- Admin Dashboard: Fully functional secured admin dashboard for managing eCommerce store.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🛠️ Technologies Used
+- Next.js - Framework for building server-rendered React applications.
+- Kinde - Authentication and user management service.
+- shadcn/ui - UI component library for building responsive interfaces.
+- Stripe - Payment processing platform.
+- Redis - In-memory data structure store for caching and real-time data handling.
+- Prisma - Next-generation ORM for database management.
+- PostgreSQL - Relational database management system.
+- TypeScript - Strongly typed programming language that builds on JavaScript.
