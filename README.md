@@ -1,4 +1,4 @@
-## NOX SHOP PROJECT
+# NOX SHOP PROJECT
 
 This project is a fully functional eCommerce website built with modern web technologies, designed to offer a seamless and intuitive shopping experience. The website is developed using Next.js for server-side rendering and dynamic routing, ensuring fast load times and SEO optimization.
 
@@ -12,6 +12,7 @@ This project is a fully functional eCommerce website built with modern web techn
 - Shopping Cart: Persistent shopping cart functionality that allows users to manage their selections effortlessly.
 - Order Management: Comprehensive order tracking and management system for both users and administrators.
 - Admin Dashboard: Fully functional secured admin dashboard for managing eCommerce store.
+- Custom Theming: Tailwind CSS allows for extensive customization, enabling you to easily adjust the website's look and feel to match your branding.
 
 ## 🛠️ Technologies Used
 - Next.js - Framework for building server-rendered React applications.
@@ -22,3 +23,4 @@ This project is a fully functional eCommerce website built with modern web techn
 - Prisma - Next-generation ORM for database management.
 - PostgreSQL - Relational database management system.
 - TypeScript - Strongly typed programming language that builds on JavaScript.
+- Tailwind CSS - Utility-first CSS framework for custom styling.

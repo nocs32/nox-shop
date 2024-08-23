@@ -1,4 +1,4 @@
-import { deleteCartProduct } from "@/app/actions";
+import { checkout, deleteCartProduct } from "@/app/actions";
 import { redis } from "@/app/lib/redis";
 import { Cart } from "@/app/types";
 import { Button } from "@/components/ui/button";
@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 import { DeleteProductButton } from "../components/delete-product-button";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
+import { CheckoutButton } from "../components/checkout-button";
 
 export default async function CartPage() {
     const { getUser } = getKindeServerSession();
@@ -24,7 +25,7 @@ export default async function CartPage() {
     return (
         <div className="max-w-2xl mt-10 mx-auto min-h-[55vh]">
             {
-                cart?.items.length === 0 ?
+                !cart || cart?.items.length === 0 ?
                     (
                         <div className="flex min-h-[400px] flex-col items-center justify-center rounded-lg border border-dashed p-8 text-center mt-20">
                             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-red-500/10">
@@ -32,7 +33,7 @@ export default async function CartPage() {
                             </div>
                             <h2 className="font-xl mt-6 font-semibold">Your cart is empty</h2>
                             <div className="flex flex-col mt-2 items-center">
-                                <p className="text-sm leading-6 text-muted-foreground max-w-sm">Looks like you haven't added anything to your cart yet.</p>
+                                <p className="text-sm leading-6 text-muted-foreground max-w-sm">Looks like you haven&apos;t added anything to your cart yet.</p>
                                 <Button className="text-white bg-red-500 mt-4" asChild>
                                     <Link href="/">Start shopping</Link>
                                 </Button>
@@ -67,7 +68,9 @@ export default async function CartPage() {
                                     <p>Subtotal:</p>
                                     <p>${new Intl.NumberFormat("en-US").format(totalPrice)}</p>
                                 </div>
-                                <Button className="w-full mt-5" size="lg">Checkout</Button>
+                                <form action={checkout}>
+                                    <CheckoutButton />
+                                </form>
                             </div>
                         </div>
                     )

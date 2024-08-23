@@ -1,7 +1,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { getOrders } from "./utils";
+import { capitalizeFirstLetter } from "@/app/utils";
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+    const data = await getOrders();
+
     return (
         <Card>
             <CardHeader className="px-7">
@@ -20,16 +24,18 @@ export default function OrdersPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>
-                                <p className="font-medium">Tim Nox</p>
-                                <p className="hidden md:flex text-sm text-muted-foreground">test@test.com</p>
-                            </TableCell>
-                            <TableCell>Sale</TableCell>
-                            <TableCell>Successful</TableCell>
-                            <TableCell>2024-06-15</TableCell>
-                            <TableCell>$250.00</TableCell>
-                        </TableRow>
+                        {data.map((order) => (
+                            <TableRow key={order.id}>
+                                <TableCell>
+                                    <p className="font-medium">{order.user.firstName + " " + order.user.lastName}</p>
+                                    <p className="hidden md:flex text-sm text-muted-foreground">{order.user.email}</p>
+                                </TableCell>
+                                <TableCell>Order</TableCell>
+                                <TableCell>{capitalizeFirstLetter(order.status)}</TableCell>
+                                <TableCell>{new Intl.DateTimeFormat('en-US').format(order.createdAt)}</TableCell>
+                                <TableCell>${new Intl.NumberFormat("en-US").format(order.amount / 100)}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </CardContent>

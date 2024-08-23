@@ -9,7 +9,7 @@ export function CategoriesSelection() {
         <div className="py-8 md:py-12">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-extrabold tracking-tight">Shop by Category</h2>
-                <Link className="text-sm font-semibold text-red-500 hover:text-primary/80" href="/products">Browse All Products &rarr;</Link>
+                <Link className="text-sm font-semibold text-red-500 hover:text-primary/80" href="/products/all">Browse All Products &rarr;</Link>
             </div>
             <div className="mt-6 grid grid-cols-1 gal-y-6 md:grid-cols-2 md:grid-rows-2 md:gap-x-6 lg:gap-8">
                 <div className="group aspect-w-2 aspect-h-1 rounded-xl overflow-hidden md:aspect-w-1 md:row-span-2">
@@ -26,8 +26,8 @@ export function CategoriesSelection() {
                     <Image className="object-cover object-center md:absolute md:inset-0 md:w-full md:h-full" src={men} alt="Men Category Image" />
                     <div className="bg-gradient-to-b from-transparent to-black opacity-50" />
                     <div className="p-6 flex items-end">
-                        <Link href="/products/all">
-                            <h3 className="text-white font-semibold">Men's Hats</h3>
+                        <Link href="/products/men">
+                            <h3 className="text-white font-semibold">Men&apos;s Hats</h3>
                             <p className="mt-1 text-sm text-white">Shop Now</p>
                         </Link>
                     </div>
@@ -36,8 +36,8 @@ export function CategoriesSelection() {
                     <Image className="object-cover object-center md:absolute md:inset-0 md:w-full md:h-full" src={women} alt="Women Category Image" />
                     <div className="bg-gradient-to-b from-transparent to-black opacity-50" />
                     <div className="p-6 flex items-end">
-                        <Link href="/products/all">
-                            <h3 className="text-white font-semibold">Women's hats</h3>
+                        <Link href="/products/women">
+                            <h3 className="text-white font-semibold">Women&apos;s hats</h3>
                             <p className="mt-1 text-sm text-white">Shop Now</p>
                         </Link>
                     </div>
