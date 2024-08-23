@@ -1,4 +1,4 @@
-#NOX SHOP PROJECT
+## NOX SHOP PROJECT
 
 This project is a fully functional eCommerce website built with modern web technologies, designed to offer a seamless and intuitive shopping experience. The website is developed using Next.js for server-side rendering and dynamic routing, ensuring fast load times and SEO optimization.
 
