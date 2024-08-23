@@ -6,6 +6,7 @@ import { UserDropdown } from "./user-dropdown";
 import { Button } from "@/components/ui/button";
 import { redis } from "@/app/lib/redis";
 import { Cart } from "@/app/types";
+import { ModeToggle } from "@/app/components/mode-toggle";
 
 export async function Navbar() {
     const { getUser } = getKindeServerSession();
@@ -17,13 +18,16 @@ export async function Navbar() {
         <nav className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-5 flex items-center justify-between">
             <div className="flex items-center">
                 <Link href="/">
-                    <h1 className="text-black font-bold text-xl lg:text-3xl">
+                    <h1 className="text-primary font-bold text-xl lg:text-3xl">
                         <span className="text-red-500">NOX</span>SHOP
                     </h1>
                 </Link>
             </div>
             <NavbarLinks />
             <div className="flex items-center">
+                <div className="mr-3">
+                    <ModeToggle />
+                </div>
                 {
                     user ?
                         (

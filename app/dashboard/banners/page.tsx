@@ -6,8 +6,10 @@ import { MoreHorizontal, SquarePlus, Trash2, User2 } from "lucide-react";
 import Link from "next/link";
 import { getBanners } from "./utils";
 import Image from "next/image";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function BannerPage() {
+    noStore();
     const data = await getBanners();
 
     return (

@@ -9,8 +9,10 @@ import { DeleteProductButton } from "../components/delete-product-button";
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import { CheckoutButton } from "../components/checkout-button";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function CartPage() {
+    noStore();
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 

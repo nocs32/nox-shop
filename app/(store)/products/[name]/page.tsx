@@ -1,7 +1,9 @@
 import { ProductCard } from "../../components/product-card";
 import { getProducts } from "../../utils";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function CategoriesPage({ params }: { params: { name: string } }) {
+    noStore();
     const { data, title } = await getProducts(params.name);
 
     return (

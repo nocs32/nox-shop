@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getFeaturedProducts } from "../utils"
 import { ProductCard } from "./product-card";
 import { LoadingProductCard } from "./loading-product-card";
+import { unstable_noStore as noStore } from "next/cache";
 
 export function FeaturedProducts() {
     return (
@@ -15,6 +16,7 @@ export function FeaturedProducts() {
 }
 
 async function LoadFeaturedProducts() {
+    noStore();
     const data = await getFeaturedProducts();
 
     return (

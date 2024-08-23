@@ -7,8 +7,11 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
+import { ModeToggle } from "../components/mode-toggle";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+    noStore();
     const { getUser } = getKindeServerSession();
     const user = await getUser();
 
@@ -18,10 +21,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-            <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4 bg-white">
+            <header className="sticky top-0 flex h-16 items-center justify-between border-b gap-4">
                 <div className="flex items-center">
                     <Link href="/">
-                        <h1 className="text-black font-bold text-xl lg:text-3xl">
+                        <h1 className="text-primary font-bold text-xl lg:text-3xl">
                             <span className="text-red-500">NOX</span>SHOP
                         </h1>
                     </Link>
@@ -41,24 +44,27 @@ export default async function DashboardLayout({ children }: { children: React.Re
                         </nav>
                     </SheetContent>
                 </Sheet>
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button className="rounded-full" variant="secondary" size="icon">
-                            <CircleUser className="h-5 w-5" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Account</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem asChild>
-                            <LogoutLink>
-                                <div className="cursor-pointer flex items-center justify-between w-full">
-                                    Log Out <LogOut size={20} />
-                                </div>
-                            </LogoutLink>
-                        </DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <div className="flex flex-row items-center gap-3">
+                    <ModeToggle />
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button className="rounded-full" variant="secondary" size="icon">
+                                <CircleUser className="h-5 w-5" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Account</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem asChild>
+                                <LogoutLink>
+                                    <div className="cursor-pointer flex items-center justify-between w-full">
+                                        Log Out <LogOut size={20} />
+                                    </div>
+                                </LogoutLink>
+                            </DropdownMenuItem>
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             </header>
             <main className="my-5">
                 {children}

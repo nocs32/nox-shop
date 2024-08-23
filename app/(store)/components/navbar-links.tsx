@@ -11,7 +11,13 @@ export function NavbarLinks() {
     return (
         <div className="hidden text-lg md:flex justify-center items-center gap-x-3 mx-auto">
             {navbarLinks.map((link) => (
-                <Link className={cn(location === link.href ? 'bg-red-100' : 'hover:bg-red-100 hover:bg-opacity-75', "group p-2 font-medium rounded-md")} key={link.id} href={link.href}>{link.name}</Link>
+                <Link
+                    className={cn(location === link.href ? 'bg-red-100 dark:bg-red-400' : 'hover:bg-red-100 hover:bg-opacity-75', "group p-2 font-medium rounded-md")}
+                    key={link.id}
+                    href={link.href}
+                >
+                    {link.name}
+                </Link>
             ))}
         </div>
     )

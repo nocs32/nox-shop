@@ -3,8 +3,10 @@ import { DashboardStats } from "./components/dashboard-stats";
 import { RecentOrders } from "./components/recent-orders";
 import { Chart } from "./components/chart";
 import { getChartData } from "./utils";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function Dashboard() {
+    noStore();
     const data = await getChartData();
 
     return (

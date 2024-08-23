@@ -2,8 +2,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getOrders } from "./utils";
 import { capitalizeFirstLetter } from "@/app/utils";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function OrdersPage() {
+    noStore();
     const data = await getOrders();
 
     return (
