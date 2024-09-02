@@ -2,6 +2,8 @@
 
 This project is a fully functional eCommerce website built with modern web technologies, designed to offer a seamless and intuitive shopping experience. The website is developed using Next.js for server-side rendering and dynamic routing, ensuring fast load times and SEO optimization.
 
+Website: https://shop.timnox.dev/
+
 ## 🔧 Key Features
 - Authentication & Authorization: Integrated with Kinde for secure and scalable user management.
 - UI/UX: Leveraging shadcn/ui for a responsive, accessible, and aesthetically pleasing interface.
