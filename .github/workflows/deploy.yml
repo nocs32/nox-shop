@@ -13,16 +13,23 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $VPS_HOST >> ~/.ssh/known_hosts
+
     - name: Deploy to VPS
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         VPS_USER: ${{ secrets.VPS_USER }}
         VPS_HOST: ${{ secrets.VPS_HOST }}
       run: |
-        ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $VPS_USER@$VPS_HOST << 'EOF'
-          cd ~/nox-apps/nox-shop
-          git pull origin main
-          npm install
-          npm run build
-          pm2 restart nox-shop
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $VPS_USER@$VPS_HOST << 'EOF'
+          cd ~/nox-apps/nox-shop  # Change this to your project directory on the VPS
+          git pull origin main  # Pull the latest changes from the repository
+          npm install  # Install dependencies
+          npm run build  # Build the project on the VPS
+          pm2 restart nox-shop  # Restart your PM2 application
         EOF
