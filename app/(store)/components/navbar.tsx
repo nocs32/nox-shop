@@ -19,7 +19,7 @@ export async function Navbar() {
             <div className="flex items-center">
                 <Link href="/">
                     <h1 className="text-primary font-bold text-xl lg:text-3xl">
-                        <span className="text-red-500">NOX</span>SHOP
+                        <span className="text-red-500">NOX</span>SHOP2
                     </h1>
                 </Link>
             </div>
