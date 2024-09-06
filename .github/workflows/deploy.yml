@@ -12,23 +12,19 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VPS_HOST }}
+        username: ${{ secrets.VPS_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: | 
+          cd ~/nox-apps/nox-shop  
+          git pull origin main 
+          npm install  
+          npm run build  
+          pm2 restart nox-shop
 
-    - name: Set up SSH
-      run: |
-        mkdir ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 400 ~/.ssh/id_rsa
-
-    - name: Deploy to VPS
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        VPS_USER: ${{ secrets.VPS_USER }}
-        VPS_HOST: ${{ secrets.VPS_HOST }}
-      run: |
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa $VPS_USER@$VPS_HOST << 'EOF'
-          cd ~/nox-apps/nox-shop  # Change this to your project directory on the VPS
-          git pull origin main  # Pull the latest changes from the repository
-          npm install  # Install dependencies
-          npm run build  # Build the project on the VPS
-          pm2 restart nox-shop  # Restart your PM2 application
-        EOF
+        
